@@ -3,13 +3,13 @@ import requests
 from bs4 import BeautifulSoup
 import config
 
-resp = requests.get("https://finance.rambler.ru/currencies/EUR/")
+resp = requests.get("https://finance.rambler.ru/currencies/")
 soup = BeautifulSoup(resp.text, "lxml")
-res_eur = soup.find("div", class_="finance-currency-plate__currency").text.replace("</div", "")
+res_eur = soup.find_all("div", class_="currency-block__marketplace-value")[4].text
 
-resp = requests.get("https://finance.rambler.ru/currencies/USD/")
+resp = requests.get("https://finance.rambler.ru/currencies/")
 soup = BeautifulSoup(resp.text, "lxml")
-res_usd = soup.find("div", class_="finance-currency-plate__currency").text.replace("</div", "")
+res_usd = soup.find("div", class_="currency-block__marketplace-value").text
 
 bot = telebot.TeleBot(config.token)
 
