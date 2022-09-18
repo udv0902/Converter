@@ -39,6 +39,7 @@ def currensy(message):
 def euro(message):
 	try:
 		bot.send_message(message.chat.id, float(message.text) / float(res_eur))
+		bot.send_message(message.chat.id, "Введите команду /start")
 	except ValueError:
 		bot.send_message(message.chat.id, "Введите корректные данные")
 
@@ -46,6 +47,7 @@ def euro(message):
 def usd(message):
 	try:
 		bot.send_message(message.chat.id, float(message.text) / float(res_usd))
+		bot.send_message(message.chat.id, "Введите команду /start")
 	except ValueError:
 		bot.send_message(message.chat.id, "Введите корректные данные")
 
